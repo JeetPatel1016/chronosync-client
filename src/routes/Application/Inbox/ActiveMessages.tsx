@@ -8,7 +8,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { FaEllipsis, FaRegPenToSquare } from "react-icons/fa6";
-import MessageTile from "./messageTile";
+import MessageTile from "./MessageTile";
 
 export type MessageTileData = {
   title: string;

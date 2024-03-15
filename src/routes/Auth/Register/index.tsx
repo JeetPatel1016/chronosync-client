@@ -1,8 +1,8 @@
-import { useState, FormEventHandler } from "react";
+import { useState, FormEventHandler, ChangeEventHandler } from "react";
 import AuthLayout from "../AuthLayout";
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
+// import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 
 type RegisterPayload = {
@@ -35,7 +35,9 @@ const InitError: RegisterError = {
 export default function Register() {
   const [payload, setPayload] = useState(InitPayload);
   const [errors, setErrors] = useState(InitError);
-  const handlePayload = (e) => {
+  const handlePayload: ChangeEventHandler<
+    HTMLInputElement | HTMLButtonElement
+  > = (e) => {
     const { name, value } = e.currentTarget;
     if (errors[name as keyof RegisterError])
       setErrors((state) => ({ ...state, [name]: "" }));
@@ -45,7 +47,7 @@ export default function Register() {
       setPayload((state) => ({ ...state, [name]: value }));
     }
   };
-  const handleSubmit: FormEventHandler = () => {
+  const handleSubmit: FormEventHandler = (e) => {
     e.preventDefault();
     if (!validate()) {
       signUp();
@@ -54,7 +56,9 @@ export default function Register() {
   const validate = () => {
     return true;
   };
-  const signUp = async () => {};
+  const signUp = async () => {
+    console.log(payload);
+  };
   return (
     <AuthLayout>
       <form
@@ -102,7 +106,8 @@ export default function Register() {
         </label>
         <label className="">
           <div className="flex items-center gap-2 w-full">
-            <Checkbox
+            <input
+              type="checkbox"
               onChange={handlePayload}
               name="tnc"
               className={`input-check ${errors.tnc ? "error" : ""}`}

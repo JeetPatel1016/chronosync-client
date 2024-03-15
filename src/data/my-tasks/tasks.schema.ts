@@ -1,7 +1,7 @@
 export type Task = {
   id: string;
   title: string;
-  due_date: Date;
+  due_date: string;
   status: string;
   project: string | null;
   label: string;

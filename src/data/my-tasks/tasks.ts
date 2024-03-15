@@ -5,6 +5,7 @@ import {
   FaStopwatch,
 } from "react-icons/fa";
 import { FaCircleXmark } from "react-icons/fa6";
+import { Task } from "./tasks.schema";
 
 export const labels = [
   {
@@ -76,7 +77,7 @@ function generateDate(maxDays: number) {
   return today.toISOString();
 }
 
-export const tasks = [
+export const tasks: Task[] = [
   {
     id: "TASK-8782",
     title:
